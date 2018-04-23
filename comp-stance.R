@@ -65,7 +65,7 @@ df$hierarchy <- relevel(df$hierarchy,"novice")
 #                             "other","other","other","other","tell",
 #                             "think","other","other","other","other",
 #                             "other")
- 
+
 
 # xtabs
 prop.table(xtabs(~dep.var + investment,df),2)
