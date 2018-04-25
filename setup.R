@@ -1,6 +1,11 @@
 library(lme4)
 library(party)
 library(lattice)
+library(plyr)
+library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(wesanderson)
 
 df <- read.csv("22-04-2018.csv")
 df <- df[complete.cases(df[7]),]
@@ -13,9 +18,6 @@ df$dep.var <- relevel(df$dep.var,"zero")
 
 df <- droplevels(df[df$matrix.verb != "feel"&
 				 df$matrix.verb != "guess",])
-
-# clean up matrix subj
-levels(df$matrix.subj.simp) <- c("I","I","other")
 
 # clean up stance
 df <- droplevels(df[df$affect!="",])
@@ -30,28 +32,43 @@ df$investment <- relevel(df$investment,"low")
 
 df <- droplevels(df[df$alignment!="",])
 levels(df$alignment)
-levels(df$alignment) <- c("align","align","neutral","disalign","disalign","align","neutral")
+levels(df$alignment) <- c("align","align","neutral","disalign","disalign","neutral")
 df$alignment <- relevel(df$alignment,"disalign")
 
 df <- droplevels(df[df$hierarchy!="",])
 levels(df$hierarchy)
-levels(df$hierarchy) <- c("same","expert","expert","novice","novice","novice","same","same","same")
+levels(df$hierarchy) <- c("same","expert","expert","novice","novice","same","same","same")
 df$hierarchy <- relevel(df$hierarchy,"novice")
 
-# clean up matrix verb
-# xtabs(~matrix.verb,df)
-# levels(df$matrix.verb) <- c("other","assume","be","be+adj","believe", # above 7
-#                             "be+np","other","other","other","other",
-#                             "other","feel","other","other","other",
-#                             "other","other","other","guess","hear",
-#                             "other","other","other","other","other",
-#                             "know","other","other","make-sure","other",
-#                             "mean","other","other","other","other",
-#                             "other","other","other","remember","say",
-#                             "say","other","other","other","other",
-#                             "other","other","other","other","tell",
-#                             "think","other","other","other","other",
-#                             "other")
+xtabs(~matrix.verb,df)
+levels(df$matrix.verb) <- c("other","other","other","other",
+							"other","other","other","other",
+							"other","other", "other","other",
+							"other","other", "other","other",
+							"other","other","other","other",
+							"other","know","other","other",
+							"make-sure","other","other","other",
+							"other","other","other", "other",
+							"other","other","other","remember",
+							"say","other","other","other",
+							"other","other","other","other",
+							"tell", "think","other","other",
+							"other","other","other")
+
+# levels(df$matrix.verb) <- c("other","other","other","other",
+#                             "other","other","other","other",
+#                             "other","other", "other","other",
+#                             "other","other", "other","other",
+#                             "other","other","other","other",
+#                             "other","other","other","other",
+#                             "other","other","other","other",
+#                             "other","other","other", "other",
+#                             "other","other","other","other",
+#                             "other","other","other","other",
+#                             "other","other","other","other",
+#                             "other", "think","other","other",
+#                             "other","other","other")
+
 
 # levels(df$matrix.verb) <- c("other","other","be","be+adj","other", # above 10
 #                             "be+np","other","other","other","other",
@@ -65,3 +82,7 @@ df$hierarchy <- relevel(df$hierarchy,"novice")
 #                             "other","other","other","other","tell",
 #                             "think","other","other","other","other",
 #                             "other")
+
+# fiddling with stance
+levels(df$hierarchy) <- c("nonexpert","nonexpert","expert")
+levels(df$investment) <- c("none","some","some")

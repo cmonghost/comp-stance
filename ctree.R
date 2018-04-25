@@ -1,9 +1,23 @@
 # ctree
-v.ctree <- ctree(dep.var ~ matrix.verb + affect + investment + alignment + hierarchy + event.type.generic, df) # with verb
-plot(v.ctree)
-
-ctree <- ctree(dep.var ~ affect + investment + alignment + hierarchy + event.type.generic, df) # without verb
+ctree <- ctree(dep.var ~
+			   investment +
+			   matrix.subj.simp,
+		   df)
 plot(ctree)
+
+
+ctree <- ctree(dep.var ~
+			   hierarchy +
+			   matrix.subj.simp,
+		   df)
+plot(ctree)
+
+ctree <- ctree(dep.var~
+			   alignment + 
+			   matrix.verb,
+		   df)
+plot(ctree)
+
 
 ctree <- ctree(dep.var ~
 			   affect +
@@ -15,7 +29,7 @@ ctree <- ctree(dep.var ~
 			   intervening.elsewhere +
 			   matrix.subj.simp +
 			   matrix.verb,
-			   #speaker,
+		   #speaker,
 		   df)
 ctree
 plot(ctree)
