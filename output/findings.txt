@@ -1,0 +1,13 @@
+FINDINGS
+
+- investment x matrix subj:
+	low investment, first-person singular = ZERO +
+	low investment, other = OVERT +
+
+- investment x matrix verb:
+	low investment, 'say' = OVERT +
+
+- hierarchy x matrix verb:
+	same hierarchy,, 'know' = ZERO +
+
+stance x other things - more powerful effects than formality

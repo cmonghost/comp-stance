@@ -1,0 +1,116 @@
+---------------------------------------------------------------------
+
+Notes:
+
+- In a model with only main effects (and indiv as random), none of
+  the stance predictors are significant.
+- There is a big interaction with matrix subject and investment:
+  low investment + "I" favours zero (more than "I" alone), but
+  low investment + other favours overt.
+- There are several minor/marginal interactions with investment and
+  hierarchy with matrix verb, e.g. same-level hierarchy + 'know'
+  favours zero, but these are less robust and don't show up when
+  other interactions are included.
+- When the stance predictors are included in the model, the event
+  type predictor becomes only marginally significant (p ~= 0.07).
+
+
+---------------------------------------------------------------------
+
+Base model:
+
+Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: dep.var ~ affect + alignment + intervening.elsewhere + hierarchy +
+    investment + event.type.generic + intervening.verbal + matrix.verb +
+    matrix.subj.simp + (1 | speaker)
+   Data: df
+Control: glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 1e+08))
+
+     AIC      BIC   logLik deviance df.resid
+   703.5    781.7   -334.7    669.5      717
+
+Scaled residuals:
+    Min      1Q  Median      3Q     Max
+-2.5075 -0.5180 -0.2225  0.5794  6.1139
+
+Random effects:
+ Groups  Name        Variance Std.Dev.
+ speaker (Intercept) 0.5821   0.7629
+Number of obs: 734, groups:  speaker, 8
+
+Fixed effects:
+                             Estimate Std. Error z value Pr(>|z|)
+(Intercept)                   0.60190    0.56776   1.060 0.289081
+affectneutral                -0.14986    0.27651  -0.542 0.587837
+affectpositive                0.02335    0.32274   0.072 0.942313
+alignmentalign               -0.07736    0.34690  -0.223 0.823522
+alignmentneutral              0.03750    0.36761   0.102 0.918749
+intervening.elsewherepresent  0.92676    0.26864   3.450 0.000561 ***
+hierarchyexpert               0.27201    0.22254   1.222 0.221589
+investmentsome               -0.08328    0.28605  -0.291 0.770936
+event.type.genericformal      0.53301    0.29668   1.797 0.072401 .
+event.type.genericmedium     -0.16077    0.25421  -0.632 0.527120
+intervening.verbalpresent     1.07764    0.50479   2.135 0.032776 *
+matrix.verbknow              -0.37199    0.34834  -1.068 0.285565
+matrix.verbmake-sure         -0.50002    0.45436  -1.100 0.271118
+matrix.verbsay               -1.37753    0.30390  -4.533 5.82e-06 ***
+matrix.verbthink             -1.93569    0.28700  -6.745 1.53e-11 ***
+matrix.subj.simpI            -1.45471    0.24437  -5.953 2.63e-09 ***
+
+---------------------------------------------------------------------
+
+Model with all interactions:
+
+Generalized linear mixed model fit by maximum likelihood (Laplace
+  Approximation) [glmerMod]
+ Family: binomial  ( logit )
+Formula: dep.var ~ affect + alignment + intervening.elsewhere + hierarchy +
+    investment + event.type.generic + intervening.verbal + matrix.verb +
+    matrix.subj.simp + investment:matrix.subj.simp + investment:matrix.verb +
+    (1 | speaker)
+   Data: df
+Control: glmerControl(optimizer = "bobyqa", optCtrl = list(maxfun = 1e+08))
+
+     AIC      BIC   logLik deviance df.resid
+   693.4    790.0   -325.7    651.4      713
+
+Scaled residuals:
+    Min      1Q  Median      3Q     Max
+-2.6235 -0.5202 -0.2213  0.5508 11.7118
+
+Random effects:
+ Groups  Name        Variance Std.Dev.
+ speaker (Intercept) 0.5733   0.7572
+Number of obs: 734, groups:  speaker, 8
+
+Fixed effects:
+                                 Estimate Std. Error z value Pr(>|z|)
+(Intercept)                       1.15910    0.73242   1.583 0.113519
+affectneutral                    -0.20019    0.27916  -0.717 0.473302
+affectpositive                   -0.08328    0.32800  -0.254 0.799561
+alignmentalign                   -0.08108    0.35312  -0.230 0.818394
+alignmentneutral                  0.07467    0.37051   0.202 0.840282
+intervening.elsewherepresent      1.05482    0.27758   3.800 0.000145 ***
+hierarchyexpert                   0.35371    0.22930   1.543 0.122932
+investmentsome                   -0.74412    0.59969  -1.241 0.214666
+event.type.genericformal          0.55699    0.30473   1.828 0.067574 .
+event.type.genericmedium         -0.18341    0.25742  -0.712 0.476157
+intervening.verbalpresent         1.19714    0.50908   2.352 0.018693 *
+matrix.verbknow                   0.62140    1.01086   0.615 0.538737
+matrix.verbmake-sure             -0.48875    0.45466  -1.075 0.282378
+matrix.verbsay                   -0.12077    0.87387  -0.138 0.890082
+matrix.verbthink                 -2.43284    0.62921  -3.867 0.000110 ***
+matrix.subj.simpI                -2.67651    0.57946  -4.619 3.86e-06 ***
+investmentsome:matrix.subj.simpI  1.44733    0.62233   2.326 0.020037 *
+investmentsome:matrix.verbknow   -1.06351    1.06617  -0.998 0.318519
+investmentsome:matrix.verbsay    -1.52115    0.93947  -1.619 0.105414
+investmentsome:matrix.verbthink   0.71779    0.70818   1.014 0.310787
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Correlation matrix not shown by default, as p = 20 > 12.
+Use print(x, correlation=TRUE)  or
+         vcov(x)         if you need it
+

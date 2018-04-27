@@ -19,8 +19,8 @@ investment.cols <- ggplot(
 	theme_tufte() +
 	theme(text=element_text(family="Fira Sans",size=18)) +
 	labs(fill="variant",x="investment",y="") +
-	geom_text(aes(x = Var1, y = prop, label = (Freq)), nudge_y = -10, family = "Fira Sans") +
-	scale_fill_manual(values=wes_palette(n=3,name="FantasticFox"))
+	#geom_text(aes(x = Var1, y = prop, label = (Freq)), nudge_y = -10, family = "Fira Sans") +
+	scale_fill_manual(values=wes_palette(n=3,name="Chevalier1"))
 	investment.cols
 
 affect.df <- table(df$affect,df$dep.var)
@@ -34,8 +34,8 @@ affect.cols <- ggplot(
 	theme_tufte() +
 	theme(text=element_text(family="Fira Sans",size=18)) +
 	labs(fill="variant",x="affect",y="") +
-	geom_text(aes(x = Var1, y = prop, label = (Freq)), nudge_y = -10, family = "Fira Sans") +
-	scale_fill_manual(values=wes_palette(n=3,name="FantasticFox"))
+	#geom_text(aes(x = Var1, y = prop, label = (Freq)), nudge_y = -10, family = "Fira Sans") +
+	scale_fill_manual(values=wes_palette(n=3,name="Chevalier1"))
 	affect.cols
 
 hierarchy.df <- table(df$hierarchy,df$dep.var)
@@ -49,8 +49,8 @@ hierarchy.cols <- ggplot(
 	theme_tufte() +
 	theme(text=element_text(family="Fira Sans",size=18)) +
 	labs(fill="variant",x="hierarchy",y="") +
-	geom_text(aes(x = Var1, y = prop, label = (Freq)), nudge_y = -10, family = "Fira Sans") +
-	scale_fill_manual(values=wes_palette(n=3,name="FantasticFox"))
+	#geom_text(aes(x = Var1, y = prop, label = (Freq)), nudge_y = -10, family = "Fira Sans") +
+	scale_fill_manual(values=wes_palette(n=3,name="Chevalier1"))
 	hierarchy.cols
 
 
@@ -66,25 +66,22 @@ alignment.cols <- ggplot(
 	theme_tufte() +
 	theme(text=element_text(family="Fira Sans",size=18)) +
 	labs(fill="variant",x="alignment",y="") +
-	geom_text(aes(x = Var1, y = prop, label = (Freq)), nudge_y = -10, family = "Fira Sans") +
-	scale_fill_manual(values=wes_palette(n=3,name="FantasticFox"))
+	#geom_text(aes(x = Var1, y = prop, label = (Freq)), nudge_y = -10, family = "Fira Sans") +
+	scale_fill_manual(values=wes_palette(n=3,name="Chevalier1"))
 	alignment.cols
 
-png("output/investment-cols.png",width=1000,height=700)
+png("output/investment-cols.png",width=500,height=500)
 investment.cols
 dev.off()
 
-png("output/affect-cols.png",width=1000,height=700)
+png("output/affect-cols.png",width=500,height=500)
 affect.cols
 dev.off()
 
-png("output/hierarchy-cols.png",width=1000,height=700)
+png("output/hierarchy-cols.png",width=500,height=500)
 hierarchy.cols
 dev.off()
 
-png("output/alignment-cols.png",width=1000,height=700)
+png("output/alignment-cols.png",width=500,height=500)
 alignment.cols
 dev.off()
-
-### AGE ###
-
