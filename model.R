@@ -45,6 +45,8 @@ summary(m1)
 df$investment <- relevel(df$investment,"mid")
 df$matrix.subj.simp <- relevel(df$matrix.subj.simp,"other")
 
+levels(df$hierarchy) <- c("novice","sameexpert","sameexpert")
+
 m3 <- glmer(dep.var ~
 			   affect +
 			   alignment +

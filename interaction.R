@@ -8,8 +8,8 @@ interaction.cols <- ggplot(
 						  data=interaction.df) +
 	geom_bar(stat="identity",position="stack") +
 	theme_few() +
-	theme(text=element_text(family="Linux Libertine O",size=18)) +
-	labs(fill="variant",x="interaction",y="") +
+	theme(text=element_text(family="Linux Libertine O",size=24)) +
+	labs(fill="variant",x="investment",y="") +
 	#geom_text(aes(x = Var1, y = prop, ymax = prop, hjust = 0.5, label = (Freq)), family = "Linux Libertine O") +
 	facet_wrap(Var3~Var4) +
 	#scale_fill_few()
@@ -18,6 +18,8 @@ interaction.cols <- ggplot(
 png("interactioncollapsed.png",height=800,width=1000)
 interaction.cols
 dev.off()
+
+xtabs(~dep.var + matrix.subj.simp + matrix.verb,df)
 
 interaction.df <- table(df$investment,df$dep.var,df$matrix.verb)
 interaction.df <- as.data.frame(interaction.df)
@@ -28,7 +30,7 @@ interaction.cols <- ggplot(
 	geom_bar(stat="identity",position="stack") +
 	theme_few() +
 	theme(text=element_text(family="Linux Libertine O",size=18)) +
-	labs(fill="variant",x="interaction",y="") +
+	labs(fill="variant",x="investment",y="") +
 	geom_text(aes(x = Var1, y = prop, ymax = prop, hjust = 0.5, label = (Freq)), family = "Linux Libertine O") +
 	facet_wrap(~Var3) +
 	#scale_fill_few()
